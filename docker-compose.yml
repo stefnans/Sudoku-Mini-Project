@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  sudoku-backend:
+    build: backend
+    ports:
+      - 8080:8080
+    command: ["java", "-jar", "/opt/app/sudoku-demo.jar"]
+
+  sudoku-frontend:
+    build: frontend/angularSudoku
+    ports:
+      - 4200:80
+    depends_on:
+      - sudoku-backend

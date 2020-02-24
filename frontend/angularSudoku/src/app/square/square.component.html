@@ -1,0 +1,41 @@
+<div class="game">
+
+    <div class="menu">
+        <p *ngIf="playerFeedback">
+            {{playerFeedback}}
+        </p>
+
+        <button (click)="resetGame()">
+            Reset
+        </button>
+    </div>
+
+    <div *ngIf="square">
+        <table class="sudoku-table">
+            <tbody>
+                <tr *ngFor="let row of square.square; let i = index">
+                    <td *ngFor="let element of row;  let j = index"
+                        (click)="cellClick(i, j)" [class.active]="i==selectedCellX && j==selectedCellY">
+                        <div *ngIf="element > 0">
+                            {{element}}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    
+    <table>
+        <thead>Input table</thead>
+        <tbody>
+            <!--<ng-container *ngFor="let row of square.elements; let i = index">
+                <ng-container *ngFor="let point of row.points; let j = index">
+                  <tr>{{point}}</tr>
+                </ng-container>
+              </ng-container>   --> 
+            <tr *ngFor="let row of input">
+                  <td *ngFor="let element of row" (click)="update(element)">{{element}}</td>
+              </tr>
+        </tbody>
+    </table>
+</div>
