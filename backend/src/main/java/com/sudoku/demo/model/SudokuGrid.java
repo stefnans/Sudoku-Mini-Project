@@ -31,7 +31,6 @@ public class SudokuGrid {
     private final List<Set<Integer>> columnSets = new ArrayList<>();
 
     public SudokuGrid(int[][] grid) {
-        // TODO: check all conditions like square
         if (grid.length != GRID_SIZE) {
             throw new IllegalArgumentException("Bad Sudoku table initialization: Should have 9 rows but instead got " +
                     grid.length + " rows");
@@ -39,7 +38,7 @@ public class SudokuGrid {
 
         for (int[] column: grid) {
             if (column.length != GRID_SIZE) {
-                throw new IllegalArgumentException("Bad Sudoku table initialization: Bad size of table row");
+                throw new IllegalArgumentException("Bad Sudoku table initialization: Bad size of table rows");
             }
         }
 

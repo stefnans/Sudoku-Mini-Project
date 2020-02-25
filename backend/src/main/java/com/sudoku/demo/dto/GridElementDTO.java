@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Data
-public class SquareElementDTO {
+public class GridElementDTO {
     private final int elem;
     private final int x;
     private final int y;
