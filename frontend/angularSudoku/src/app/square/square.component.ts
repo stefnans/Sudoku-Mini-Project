@@ -22,6 +22,7 @@ export class SquareComponent implements OnInit {
 
   ngOnInit(): void {
     this.squareService.find().subscribe(data => {
+      console.log(data);
       this.square = data;
     })
   }
