@@ -123,23 +123,23 @@ public class SudokuGrid {
             if (!(this.grid[gridX][gridY] == elem)) {
                 // First do the checks
                 if (rowSets.get(gridX).contains(elem)) {
-                    throw new DuplicateSudokuException("Bad move: Row " + gridX + " has already " + elem);
+                    throw new DuplicateSudokuException("Bad move: Row " + (gridX + 1) + " has already " + elem);
                 }
 
                 if (columnSets.get(gridY).contains(elem)) {
-                    throw new DuplicateSudokuException("Bad move: Column " + gridY + " has already " + elem);
+                    throw new DuplicateSudokuException("Bad move: Column " + (gridY + 1) + " has already " + elem);
                 }
 
                 int squareIndex = translateTo1DCoordinate(gridX, gridY);
                 if (squareSets.get(squareIndex).contains(elem)) {
-                    throw new DuplicateSudokuException("Bad move: Square (" + gridX + "," + gridY + ") has already " + elem);
+                    throw new DuplicateSudokuException("Bad move: Square (" + (gridX+1) + "," + (gridY+1) + ") has already " + elem);
                 }
 
                 rowSets.get(gridX).add(elem);
                 columnSets.get(gridY).add(elem);
                 squareSets.get(squareIndex).add(elem);
 
-                // remove the element we just replaced from the set
+                // remove the element we just replaced from the sets
                 rowSets.get(gridX).remove(this.grid[gridX][gridY]);
                 columnSets.get(gridY).remove(this.grid[gridX][gridY]);
                 squareSets.get(squareIndex).remove(this.grid[gridX][gridY]);

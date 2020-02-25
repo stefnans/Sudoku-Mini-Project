@@ -1,3 +1,3 @@
 export class Square {
-    square: number[][]
+    grid: number[][]
 }

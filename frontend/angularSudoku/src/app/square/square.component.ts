@@ -22,7 +22,6 @@ export class SquareComponent implements OnInit {
 
   ngOnInit(): void {
     this.squareService.find().subscribe(data => {
-      console.log(data);
       this.square = data;
     })
   }
@@ -38,7 +37,7 @@ export class SquareComponent implements OnInit {
       this.squareService.postTurn(new SudokuElement(i, this.selectedCellX, this.selectedCellY))
         .subscribe(result => {
           this.playerFeedback = "Ok"
-          this.square.square[this.selectedCellX][this.selectedCellY] = i;
+          this.square.grid[this.selectedCellX][this.selectedCellY] = i;
         },
           err => this.playerFeedback = err.error.SudokuApiError.message
         )
