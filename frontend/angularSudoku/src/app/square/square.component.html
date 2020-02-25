@@ -13,7 +13,7 @@
     <div *ngIf="square">
         <table class="sudoku-table">
             <tbody>
-                <tr *ngFor="let row of square.square; let i = index">
+                <tr *ngFor="let row of square.grid; let i = index">
                     <td *ngFor="let element of row;  let j = index"
                         (click)="cellClick(i, j)" [class.active]="i==selectedCellX && j==selectedCellY">
                         <div *ngIf="element > 0">
