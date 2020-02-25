@@ -1,5 +1,6 @@
 package com.sudoku.demo.model;
 
+import com.sudoku.demo.exceptions.DuplicateSudokuException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +43,7 @@ class SudokuGridTest {
             {6, 9, 4, 0, 11, 0, 2, 0, 0},
             {0, 0, 2, 3, 9, 0, 5, 4, 0},
             {0, 5, 0, 0, 8, 0, 0, 0, 0},
-            {0, 0, 5, 0, 0, 2, 4, 12},
+            {0, 0, 5, 0, 0, 2, 4, 12, 9},
             {9, 0, 6, 0, 0, 0, 0, 5, 2},
             {7, 0, 0, 5, 0, 9, 3, 0, 0}};
 
@@ -52,7 +53,7 @@ class SudokuGridTest {
             {6, 9, 4, 0, 5, 0, 2, 0, 0},
             {0, 0, 2, 3, 9, 0, 5, 4, 0},
             {0, 5, 0, 0, 8, 0, 0, 0, 0},
-            {0, 0, 5, 0, 0, 2, 4, 0},
+            {0, 0, 5, 0, 0, 2, 4, 0, 9},
             {9, 0, 6, 0, 0, 0, 0, 5, 2},
             {7, 0, 0, 5, 0, 9, 3, 0, 0}};
 
@@ -62,7 +63,7 @@ class SudokuGridTest {
             {6, 9, 4, 0, 5, 0, 2, 0, 0},
             {0, 0, 2, 3, 9, 0, 5, 4, 0},
             {0, 5, 0, 0, 8, 0, 0, 0, 0},
-            {0, 0, 5, 0, 0, 2, 4, 0},
+            {0, 0, 5, 0, 0, 2, 4, 0, 9},
             {9, 0, 6, 0, 0, 0, 0, 5, 2},
             {7, 0, 0, 5, 0, 9, 3, 0, 0}};
 
@@ -72,7 +73,7 @@ class SudokuGridTest {
             {6, 9, 4, 0, 5, 0, 2, 0, 0},
             {0, 0, 2, 3, 9, 0, 5, 4, 0},
             {0, 5, 0, 0, 8, 0, 0, 0, 0},
-            {0, 0, 5, 0, 0, 2, 4, 0},
+            {0, 0, 5, 0, 0, 2, 4, 0, 9},
             {9, 0, 6, 0, 0, 0, 0, 5, 2},
             {7, 0, 0, 5, 0, 9, 3, 0, 0}};
 
@@ -109,23 +110,29 @@ class SudokuGridTest {
     }
 
     @Test
-    void checkRowSetsAreValid() {
-
+    void setPredeterminedCellChangesNothing() throws DuplicateSudokuException {
+        sudokuGrid.setCell(3, 0, 0);
+        assertEquals(2, sudokuGrid.getElement(0, 0));
     }
 
     @Test
-    void getGrid() {
+    void setEmptyCellWithValidMoveChangesIt() throws DuplicateSudokuException {
+        sudokuGrid.setCell(1, 8, 1);
+        assertEquals(1, sudokuGrid.getElement(8, 1));
     }
 
     @Test
-    void getElement() {
+    void setCellWithDuplicatesInRow() {
+        assertThrows(DuplicateSudokuException.class, () -> sudokuGrid.setCell(6, 3, 3));
     }
 
     @Test
-    void setCell() {
+    void setCellWithDuplicatesInColumn() {
+        assertThrows(DuplicateSudokuException.class, () -> sudokuGrid.setCell(2, 1, 0));
     }
 
     @Test
-    void verify() {
+    void setCellWithDuplicatesInSquare() {
+        assertThrows(DuplicateSudokuException.class, () -> sudokuGrid.setCell(9, 6, 7));
     }
 }
