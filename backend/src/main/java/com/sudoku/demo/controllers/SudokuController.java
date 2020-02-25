@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import static com.sudoku.demo.model.Square.EMPTY;
+import static com.sudoku.demo.model.SudokuGrid.EMPTY;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
