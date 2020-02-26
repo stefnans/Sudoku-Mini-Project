@@ -37,3 +37,8 @@ td:hover {
 .sudoku-table tr td.active {
   background-color: deepskyblue;
 }
+
+.disabled-cell {
+  /*https://css-tricks.com/almanac/properties/p/pointer-events/ */
+  pointer-events: none;
+}

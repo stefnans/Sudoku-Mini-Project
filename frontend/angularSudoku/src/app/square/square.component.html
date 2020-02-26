@@ -15,7 +15,8 @@
             <tbody>
                 <tr *ngFor="let row of square.grid; let i = index">
                     <td *ngFor="let element of row;  let j = index"
-                        (click)="cellClick(i, j)" [class.active]="i==selectedCellX && j==selectedCellY">
+                        (click)="cellClick(i, j)" [class.active]="i==selectedCellX && j==selectedCellY"
+                        [class.disabled-cell]="square.initialGrid[i][j] != 0">
                         <div *ngIf="element > 0">
                             {{element}}
                         </div>
