@@ -13,6 +13,6 @@ public class DtoConverter {
     }
 
     public SudokuGridDTO toSudokuGridDTO(SudokuGrid sudokuGrid) {
-        return new SudokuGridDTO(sudokuGrid.getGrid());
+        return new SudokuGridDTO(sudokuGrid.getInitialGrid(), sudokuGrid.getGrid());
     }
 }

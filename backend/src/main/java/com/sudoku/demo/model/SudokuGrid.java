@@ -92,6 +92,18 @@ public class SudokuGrid {
         return gridCopy;
     }
 
+    /**
+     * Return the initial sudoku grid.
+     * @return a copy of the initial grid.
+     */
+    public int[][] getInitialGrid() {
+        int[][] gridCopy = this.grid.clone();
+        for (int i = 0; i < GRID_SIZE; i++) {
+            gridCopy[i] = this.grid[i].clone();
+        }
+        return gridCopy;
+    }
+
     public int getElement(int x, int y) {
         return this.grid[x][y];
     }
