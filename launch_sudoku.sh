@@ -7,6 +7,7 @@ cd ..
 
 # Build frontend project
 cd frontend/angularSudoku || exit
+npm install
 ng build --prod
 
 # Go back to project root
